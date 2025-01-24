@@ -5,7 +5,7 @@ services:
     container_name: v2ray
     ports:
       - "127.0.0.1:10000:10000"
-    command: v2ray --config=/etc/v2ray/config.json
+    command: /usr/local/bin/v2ray run -c /etc/v2ray/config.json
     volumes:
       - ${PWD}/v2ray:/etc/v2ray
     restart: unless-stopped
