@@ -1,17 +1,20 @@
 {
-    http_port 8080
-    https_port 8443
+    auto_https disable_redirects
+    servers :8443 {
+        protocol {
+            allow_h2c
+        }
+    }
 }
 
 vpn.avrdu.de:8443 {
   log {
     output file /logs/access-v2ray.log {
-                       roll_size 1gb
-                       roll_keep 5
-                       roll_keep_for 720h
-               }
-               level INFO
- 
+      roll_size 1gb
+      roll_keep 5
+      roll_keep_for 720h
+    }
+    level INFO
   }
   tls {
     protocols tls1.2 tls1.3
