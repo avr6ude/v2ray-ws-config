@@ -7,7 +7,7 @@ services:
       - "127.0.0.1:10000:10000"
     command: run -c /etc/v2ray/config.json
     volumes:
-      - ${PWD}/v2ray:/etc/v2ray
+      - ${PWD}/v2ray-server.json:/etc/v2ray/config.json
     restart: unless-stopped
   proxy:
     image: caddy
