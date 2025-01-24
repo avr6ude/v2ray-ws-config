@@ -5,12 +5,8 @@ services:
     container_name: v2ray
     ports:
       - "127.0.0.1:10000:10000"
-    command: run -c /config.json
     volumes:
-      - type: bind
-        source: ${PWD}/v2ray-server.json
-        target: /config.json
-        read_only: true
+      - ./v2ray-server.json:/etc/v2ray/config.json:ro
     restart: unless-stopped
   proxy:
     image: caddy
