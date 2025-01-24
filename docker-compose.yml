@@ -13,7 +13,8 @@ services:
   proxy:
     image: caddy
     restart: always
-    network_mode: host
+    ports:
+      - "9443:9443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./caddy:/data/
