@@ -1,4 +1,4 @@
-vpn.avrdu.de {
+vpn.avrdu.de:8443 {
   log {
     output file /logs/access-v2ray.log {
                        roll_size 1gb
