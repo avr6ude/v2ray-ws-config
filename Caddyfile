@@ -1,18 +1,28 @@
-vpn.avrdu.de:8443 {
+:8443 {
     log {
-        output file /logs/access-v2ray.log {
-            roll_size 1gb
-            roll_keep 5
-            roll_keep_for 720h
-        }
-        level INFO
+        output stdout
+        level DEBUG
     }
-    tls internal  # Caddy will generate self-signed cert
     
     @v2ray_websocket {
         path /ws
         header Connection *Upgrade*
         header Upgrade websocket
     }
-    reverse_proxy @v2ray_websocket 127.0.0.1:10000
+    
+    handle @v2ray_websocket {
+        reverse_proxy http://host.docker.internal:10000 {
+            trusted_proxies private_ranges
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up X-Forwarded-Proto {scheme}
+            header_up Connection *Upgrade*
+            header_up Upgrade websocket
+        }
+    }
+
+    handle {
+        respond "Not found" 404
+    }
 }
