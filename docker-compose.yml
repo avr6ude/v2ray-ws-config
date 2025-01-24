@@ -5,9 +5,9 @@ services:
     container_name: v2ray
     ports:
       - "127.0.0.1:10000:10000"
-    command: run -c /etc/v2ray/config.json
+    command: run -c /v2ray-server.json
     volumes:
-      - ${PWD}/v2ray:/etc/v2ray
+      - ${PWD}/v2ray-server.json:/v2ray-server.json
     restart: unless-stopped
   proxy:
     image: caddy
