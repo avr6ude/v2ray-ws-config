@@ -1,4 +1,4 @@
-server.example.com {
+vpn.avrdu.de {
   log {
     output file /logs/access-v2ray.log {
                        roll_size 1gb
