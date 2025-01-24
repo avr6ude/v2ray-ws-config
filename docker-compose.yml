@@ -13,9 +13,6 @@ services:
     image: caddy
     restart: always
     network_mode: host
-    ports:
-      - "8080:8080"
-      - "8443:8443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - ./caddy:/data/
