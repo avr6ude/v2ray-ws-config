@@ -5,7 +5,8 @@ services:
     container_name: v2ray
     ports:
       - "127.0.0.1:10000:10000"
-    command: sh -c "mkdir -p /etc/v2ray && cp /tmp/config.json /etc/v2ray/ && v2ray run -c /etc/v2ray/config.json"
+    entrypoint: [ "sh", "-c" ]
+    command: "mkdir -p /etc/v2ray && cp /tmp/config.json /etc/v2ray/ && run -c /etc/v2ray/config.json"
     volumes:
       - ${PWD}/v2ray-server.json:/tmp/config.json
     restart: unless-stopped
