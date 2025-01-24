@@ -1,4 +1,4 @@
-:8443 {
+vpn.avrdu.de:8443 {
     log {
         output file /logs/access-v2ray.log {
             roll_size 1gb
@@ -7,6 +7,8 @@
         }
         level INFO
     }
+    tls internal  # Caddy will generate self-signed cert
+    
     @v2ray_websocket {
         path /ws
         header Connection *Upgrade*
