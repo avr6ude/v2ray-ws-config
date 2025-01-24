@@ -9,6 +9,7 @@ services:
     volumes:
       - ./v2ray-server.json:/etc/v2ray/config.json:ro
     restart: unless-stopped
+
   proxy:
     image: caddy
     restart: always
